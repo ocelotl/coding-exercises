@@ -6,9 +6,6 @@ class Solution:
         self, nums1: List[int], m_: int, nums2: List[int], n_: int
     ) -> None:
 
-        from ipdb import set_trace
-        set_trace
-
         result = []
 
         index_nums1 = 0
@@ -16,9 +13,9 @@ class Solution:
 
         nums1_ = nums1[:m_]
 
-        if not nums1 or not nums1_:
-            for element in nums2:
-                nums1.append(element)
+        if not nums1_:
+            for index, element in enumerate(nums2):
+                nums1[index] = element
 
             return
 
