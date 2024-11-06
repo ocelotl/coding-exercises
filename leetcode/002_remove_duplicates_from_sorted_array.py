@@ -4,21 +4,18 @@ from typing import List
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
 
+        # We can do this instead of having a set that gathers all the seen
+        # numbers because the numbers in nums are sorted incrementally.
         last = None
-
-        result = [0] * len(nums)
 
         k = 0
 
-        for index in range(len(nums)):
+        for num in nums:
 
-            if nums[index] != last:
-                last = nums[index]
-                result[k] = nums[index]
+            if num != last:
+                nums[k] = num
+                last = num
                 k += 1
-
-        for index in range(len(result)):
-            nums[index] = result[index]
 
         return k
 
@@ -30,9 +27,9 @@ def test_case():
     nums = [1, 1, 2]
 
     assert solution.removeDuplicates(nums) == 2
-    assert nums == [1, 2, 0]
+    assert nums == [1, 2, 2]
 
     nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
 
     assert solution.removeDuplicates(nums) == 5
-    assert nums == [0, 1, 2, 3, 4, 0, 0, 0, 0, 0]
+    assert nums == [0, 1, 2, 3, 4, 2, 2, 3, 3, 4]
