@@ -4,7 +4,7 @@ from typing import List
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
 
-        present = set()
+        last = None
 
         result = [0] * len(nums)
 
@@ -12,8 +12,8 @@ class Solution:
 
         for index in range(len(nums)):
 
-            if nums[index] not in present:
-                present.add(nums[index])
+            if nums[index] != last:
+                last = nums[index]
                 result[k] = nums[index]
                 k += 1
 
